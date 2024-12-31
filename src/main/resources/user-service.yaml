@@ -10,13 +10,15 @@ spring:
     config:
       uri: http://localhost:8888
   datasource:
-    url: jdbc:mysql://localhost:3306/userdb?useSSL=false&autoReconnect=true
+    url: jdbc:mysql://mysqldb/userdb?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
     username: root
-    password: password
-    hikari:
-      connection-timeout: 30000
-      maximum-pool-size: 30
+    password: root
+    platform: mysql
+    initialization-mode: always
   jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
